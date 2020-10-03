@@ -5,6 +5,7 @@ import string
 import math
 import pandas as pd
 import statistics
+from matplotlib import pyplot as plt
 
 # generating random 60 values for testing program
 
@@ -94,3 +95,21 @@ elif mode > med > mean:
     print('\nGiven data set is skewed to right side.')
 elif mode == med == mean:
     print('\nThe given data set is normally distributed.')
+
+# forming equation for line of best fit
+eq = np.polyfit(mid_points, frequencies, 1)
+# slop
+m = eq[0]
+# y_intercept
+b = eq[1]
+# plotting scatter points
+plt.scatter(mid_points, frequencies, label='points')
+# plotting line of best fit
+plt.plot(mid_points, m*mid_points + b, c='r', label='best fit')
+# Add labels
+plt.xlabel('mid points')
+plt.ylabel('frequencies')
+# adding legends
+plt.legend()
+# Display result of plots on screen 
+plt.show()
